@@ -16,11 +16,12 @@ cat > /etc/rsyncd.conf <<EOF
 port = 873
 timeout = 3600
 max connections = 10
+transfer logging = yes
 
 log file = /dev/stdout
 pid file = /var/run/rsyncd.pid
 
-[volume]
+[data]
     uid = root
     gid = root
     list = no
