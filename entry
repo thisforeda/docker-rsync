@@ -7,6 +7,8 @@ PASSWORD=${PASSWORD:-pass}
 VOLUME=${VOLUME:-/data}
 ALLOW=${ALLOW:-192.168.8.0/24 192.168.24.0/24 172.16.0.0/12 127.0.0.1/32}
 
+MODULE_NAME=${MODULE_NAME:-volume}
+
 mkdir -p $VOLUME
 
 echo "$USERNAME:$PASSWORD" > /etc/rsyncd.secrets
@@ -21,7 +23,7 @@ transfer logging = yes
 log file = /dev/stdout
 pid file = /var/run/rsyncd.pid
 
-[data]
+[${MODULE_NAME}]
     uid = root
     gid = root
     list = no
